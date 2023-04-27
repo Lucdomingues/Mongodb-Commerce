@@ -33,7 +33,7 @@
 <h3 align="center">Mongodb-Commerce</h3>
 
   <p align="center">
-    Projeto com base em uma aplicação de uma loja medieval
+    Projeto para desenvolvimento de query's em MongoDb
     <br />
   </p>
 </div>
@@ -64,13 +64,44 @@
 
 
 <!-- SOBRE O PROJETO -->
-## Sobre o projeto
+# Sobre o projeto
 
-Para este projeto, foi criado uma loja de itens medievais, no formato de uma API, utilizando Typescript.
+## Projeto Commerce
 
-Foi desenvolvido todas as camadas da aplicação (Models, Service e Controllers) e, por meio dessa aplicação, será possível realizar as operações básicas que se pode fazer em um determinado banco de dados: Criação, Leitura, Atualização e Exclusão (ou CRUD - Create, Read, Update e Delete).
+Este projeto tem como objetivo praticar os conceitos aprendidos no curso de MongoDB por meio do uso do banco de dados commerce. Esse banco contém dados fictícios do cardápio do McDonald's, como ingredientes, valores nutricionais e dados de vendas.
 
-Foi criado também alguns endpoints que irão ler e escrever em um banco de dados, utilizando o MySQL..
+<details>
+  <summary>
+    <strong>🐳 Como usar o Docker para este projeto</strong>
+  </summary><br>
+
+  - Siga os seguintes passos:
+
+  1. Acesse o terminal na raiz da pasta do projeto;
+  2. Crie um container com um volume apontando para a pasta do projeto `docker run -d --name=nomeDoContainer -v "$PWD:/app" -p 27017:27017 mongo:5.0`;
+  3. Com o container em execução, acesse o terminal do container `docker exec -it nomeDoContainer bash`;
+  4. No terminal do container, acesse o diretório `/app` mapeado no volume conforme o passo 2;
+  > Para restaurar o banco de dados é necessário que você esteja dentro do diretório `/app`. Para mais detalhes, veja o tópico: "♻️ Restaurando o banco de dados `commerce`".
+  Se por algum motivo a execução do container for finalizada, basta iniciá-lo novamente com o comando `docker start nomeDoContainer` e seguir a partir do passo 3.
+
+</details>
+
+<details>
+  <summary>
+    <strong>♻️ Restaurando o banco de dados `commerce`</strong>
+  </summary><br>
+
+  > ⚠️ **Aviso:** Certifique-se que tenha seguido os passos do tópico: "🐳 Como usar o Docker para este projeto", pois eles são determinantes para que siga as orientações abaixo.
+
+  Dentro do container, no diretório `/app`, execute o seguinte comando para restaurar a base de dados `commerce`:
+
+  ```sh
+  DBNAME=commerce ./scripts/resetdb.sh assets/produtos
+  ```
+
+  - A execução desse script criará um banco de dados chamado `commerce` e importará os dados para a coleção `produtos`.
+
+</details>
 
 
 <p align="right">(<a href="#readme-top">de volta para o topo</a>)</p>
@@ -98,7 +129,7 @@ Para fazer um **COPY** desse projeto em sua máquina localmente, siga às etapas
 
   - Use o comando: 
    ```sh
-   git clone git@github.com:Lucdomingues/Smith.git
+   git clone git@github.com:Lucdomingues/Mongodb-Commerce.git
    ```
   2. Instale as dependências
    ```sh
